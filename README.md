@@ -35,7 +35,7 @@ yarn dev
 # Why Starverse
 
 Starverse is a opensource learning project to experiment different packages, designs and even coding standards while building components around starwars-universe (cause why not, hence the name starverse), idea is to build a component break it down with great explanations on code level and markdown level (yes every component has its own read me)
-![gif](https://media.giphy.com/media/9E7kUhnT9eDok/giphy.gif)
+![gif](https://media.giphy.com/media/e7FOBuKCDtwWI/giphy.gif)
 
 Reach me @ sdsaharukh9@gmail.com
 bootstraped from [boilerplate](https://github.com/Sebastp/Next-react-graphql-apollo_Boostrap)
