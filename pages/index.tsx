@@ -2,13 +2,13 @@ import Head from "next/head";
 import { useQuery } from "@apollo/client";
 import { Grommet } from "grommet";
 import { TestDesktop } from "grommet-icons";
-
+import Image from "next/image";
 import QUERY_HEROES from "./queryHeroes.graphql";
+import hansolo from "../public/StarVerseImages/Heroes/hansolo.jpeg";
 
 const Home = () => {
   const { data, loading, error } = useQuery(QUERY_HEROES);
 
-  console.log(data);
   // check for errors
   if (error) {
     return <p>:( an error happened</p>;
@@ -22,6 +22,21 @@ const Home = () => {
         height: "20px",
       },
     },
+  };
+
+  const WithDynamicImage = (image) => {
+    console.log(image);
+    var image_name = image?.toLowerCase().replace(/\s/g, "");
+    var path = `/../public/StarVerseImages/Heroes/${image_name}.png`;
+    console.log(path);
+    return (
+      <Image
+        src={String(path)}
+        alt="Picture of the author"
+        width={100}
+        height={100}
+      />
+    );
   };
   // if all good return data
   return (
@@ -38,7 +53,10 @@ const Home = () => {
       {/*heroes only here*/}
       <div>
         {data?.human?.friends.map((friend) => (
-          <div>{friend.name}</div>
+          <div>
+            {friend.name}
+            {WithDynamicImage(friend.name)}
+          </div>
         ))}
       </div>
     </Grommet>

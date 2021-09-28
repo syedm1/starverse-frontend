@@ -3,7 +3,7 @@ module.exports = {
     config.module.rules.push({
       test: /\.(graphql|gql)$/,
       exclude: /node_modules/,
-      loader: 'graphql-tag/loader',
+      loader: "graphql-tag/loader",
     });
     return config;
   },
@@ -11,3 +11,5 @@ module.exports = {
     return config;
   },
 };
+const withImages = require("next-images");
+module.exports = withImages();
