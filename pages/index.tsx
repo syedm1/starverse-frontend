@@ -1,10 +1,9 @@
-import Head from 'next/head';
-import { useQuery } from '@apollo/client';
+import Head from "next/head";
+import { useQuery } from "@apollo/client";
 
-import QUERY_COUNTRIES from './queryCountries.graphql';
+import QUERY_COUNTRIES from "./queryCountries.graphql";
 
-import styles from '../styles/Home.module.css';
-
+// import styles from "../styles/Home.module.css";
 export default function Home() {
   const { data, loading, error } = useQuery(QUERY_COUNTRIES);
 
@@ -15,10 +14,10 @@ export default function Home() {
 
   // if all good return data
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <title>Countries GraphQL</title>
-        <link rel='icon' href='/favicon.ico' />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       <h1>Countries</h1>
       {/* let the user know we are fetching the countries */}

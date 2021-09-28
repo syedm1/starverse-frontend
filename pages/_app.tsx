@@ -1,13 +1,11 @@
-import type { AppProps } from 'next/app';
-import { ApolloClient, InMemoryCache } from '@apollo/client';
-import { ApolloProvider } from '@apollo/client';
+import type { AppProps } from "next/app";
+import { ApolloClient, InMemoryCache } from "@apollo/client";
+import { ApolloProvider } from "@apollo/client";
 
 const client = new ApolloClient({
-  uri: 'https://countries.trevorblades.com',
+  uri: "https://countries.trevorblades.com",
   cache: new InMemoryCache(),
 });
-
-import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
