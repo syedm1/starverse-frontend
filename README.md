@@ -22,8 +22,8 @@
 - EsLint
 - Prettier
 - Jest tests
+- Material
 - Nodemon
-- Styled Components
 
 ## How to use
 
@@ -38,4 +38,3 @@ Starverse is a opensource learning project to experiment different packages, des
 ![gif](https://media.giphy.com/media/e7FOBuKCDtwWI/giphy.gif)
 
 Reach me @ sdsaharukh9@gmail.com
-bootstraped from [boilerplate](https://github.com/Sebastp/Next-react-graphql-apollo_Boostrap)
