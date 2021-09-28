@@ -22,7 +22,7 @@
 - EsLint
 - Prettier
 - Jest tests
-- Material
+- Grommet
 - Nodemon
 
 ## How to use
