@@ -4,7 +4,6 @@ import { Grommet } from "grommet";
 import { TestDesktop } from "grommet-icons";
 import Image from "next/image";
 import QUERY_HEROES from "./queryHeroes.graphql";
-import hansolo from "../public/StarVerseImages/Heroes/hansolo.jpeg";
 
 const Home = () => {
   const { data, loading, error } = useQuery(QUERY_HEROES);
