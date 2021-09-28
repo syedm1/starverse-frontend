@@ -1,56 +1,21 @@
-require('dotenv').config()
-const path = require('path')
-const Dotenv = require('dotenv-webpack')
-const withImages = require('next-images')
+// next.config.js
+const withPlugins = require('next-compose-plugins');
+const offline = require('next-offline');
 
-const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
-
-
-const configureWebpack = (config, { dev }) => {
-	config.plugins = config.plugins || []
-
-	config.plugins.push(
-		// Read the .env file
-		new Dotenv({
-			path: path.join(__dirname, '.env'),
-			systemvars: true
-		})
-  );
-	
-	
-	if (config.resolve.plugins) {
-		config.resolve.plugins.push(new TsconfigPathsPlugin());
-	} else {
-		config.resolve.plugins = [new TsconfigPathsPlugin()];
-	}
-	
-	config.module.rules.push({
-		test: /\.(eot|woff|woff2|ttf|svg|png|jpg|gif)$/,
-		use: {
-			loader: 'url-loader',
-			options: {
-				limit: 100000,
-				name: '[name].[ext]'
-			}
-		}
-	})
-	
-	config.module.rules.push({
-		test: /\.(graphql|gql)$/,
-		exclude: /node_modules/,
-		loader: 'graphql-tag/loader'
-	})
-
-	if (dev) {
-		config.module.rules.push({
-			test: /\.jsx?$/,
-			exclude: /node_modules/,
-			loader: 'eslint-loader',
-		})
-	}
-
-  return config;
+const nextConfig = {
+  target: process.env.NODE_ENV !== 'production' ? 'server' : 'serverless',
+  dontAutoRegisterSw: true,
+  generateSw: false,
+  devSwSrc: './public/sw.js',
+  workboxOpts: {
+    swSrc: './public/sw.js',
+    swDest: './public/service-worker.js',
+  },
+  // Exposes Server ENV Vars To Client Using Webpack
+  env: {
+    AUTH0_CLIENT_ID: process.env.AUTH0_CLIENT_ID,
+    AUTH0_DOMAIN: process.env.AUTH0_DOMAIN,
+  },
 };
 
-
-module.exports = withImages({ webpack: configureWebpack	})
+module.exports = withPlugins([[offline]], nextConfig);

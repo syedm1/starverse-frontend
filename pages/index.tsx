@@ -1,92 +1,111 @@
-import React from 'react'
-import Head from 'next/head'
-import Nav from '@views/components/Nav'
-import Footer from '@views/components/Footer'
+import * as React from "react";
+import Typography from "@material-ui/core/Typography";
+import { Chip, Avatar } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import Head from "next/head";
+import { Layout } from "components/Layout";
+import { RocketMan } from "components/RocketMan";
 
-const Home = () => (
-  <div>
-    <Head>
-      <title>Home</title>
-      <link rel="icon" href="/favicon.ico" />
-    </Head>
+const useStyles = makeStyles((theme: any) => ({
+  root: {
+    textAlign: "center",
+    height: "calc(100vh - 64px)",
+    position: "relative"
+  },
+  background: {
+    top: 0,
+    position: "absolute",
+    width: "100%",
+    height: "100%",
+    paddingTop: "10%",
+    backgroundColor: "#1d1d1d",
+    zIndex: -1
+  },
+  chipContainer: {
+    display: "flex",
+    justifyContent: "center"
+  },
+  chip: {
+    margin: "5px 10px",
+    color: theme.palette.primary.text,
+    backgroundColor: theme.palette.primary.main
+  },
+  strip: {
+    paddingTop: 30,
+    paddingBottom: 30
+  }
+}));
 
-    <Nav />
+const Index: React.FC = () => {
+  const handleOpenLink = (href: string) => {
+    window.open(href);
+    return false;
+  };
+  const classes = useStyles();
 
-    <div className="hero">
-      <h1 className="title">Welcome to Next.js!</h1>
-      <p className="description">
-        To get started, edit <code>pages/index.js</code> and save to reload.{' '}
-        <br />
-        Good Luck with your project :) -Sebastian
-      </p>
-
-      <div className="row">
-        <a href="https://nextjs.org/docs" className="card">
-          <h3>Documentation &rarr;</h3>
-          <p>Learn more about Next.js in the documentation.</p>
-        </a>
-        <a href="https://nextjs.org/learn" className="card">
-          <h3>Next.js Learn &rarr;</h3>
-          <p>Learn about Next.js by following an interactive tutorial!</p>
-        </a>
-        <a
-          href="https://github.com/zeit/next.js/tree/master/examples"
-          className="card"
-        >
-          <h3>Examples &rarr;</h3>
-          <p>Find other example boilerplates on the Next.js GitHub.</p>
-        </a>
+  return (
+    <Layout>
+      <div className={classes.root}>
+        <div className={classes.background}>
+          <RocketMan />
+        </div>
+        <Head>
+          <title>Nitro</title>
+        </Head>
+        <div className={classes.strip}>
+          <Typography variant="h3" gutterBottom>
+            Nitro
+          </Typography>
+          <div className={classes.chipContainer}>
+            <Chip
+              avatar={
+                <Avatar
+                  alt="MUI"
+                  src="https://material-ui.com/static/logo_raw.svg"
+                />
+              }
+              label="Material-UI"
+              className={classes.chip}
+              onClick={() => handleOpenLink("https://material-ui.com")}
+            />
+            <Chip
+              avatar={
+                <Avatar
+                  alt="NextJS"
+                  src="https://assets.zeit.co/image/upload/front/assets/design/black-triangle.png"
+                />
+              }
+              label="NextJS"
+              className={classes.chip}
+              onClick={() => handleOpenLink("https://nextjs.org/")}
+            />
+            <Chip
+              avatar={
+                <Avatar
+                  alt="TS"
+                  src="https://raw.githubusercontent.com/remojansen/logo.ts/master/ts.png"
+                />
+              }
+              label="Typescript"
+              className={classes.chip}
+              onClick={() => handleOpenLink("https://www.typescriptlang.org/")}
+            />
+            <Chip
+              avatar={
+                <Avatar
+                  alt="Auth0"
+                  src="https://avatars1.githubusercontent.com/u/2824157?s=400&amp;v=4"
+                />
+              }
+              label="Auth0"
+              className={classes.chip}
+              onClick={() => handleOpenLink("https://auth0.com/")}
+            />
+          </div>
+        </div>
       </div>
-    </div>
+    </Layout>
+  );
+};
 
-    <Footer />
-    <style jsx>{`
-      .hero {
-        width: 100%;
-        color: #333;
-      }
-      .title {
-        margin: 0;
-        width: 100%;
-        padding-top: 80px;
-        line-height: 1.15;
-        font-size: 48px;
-      }
-      .title,
-      .description {
-        text-align: center;
-      }
-      .row {
-        max-width: 880px;
-        margin: 80px auto 40px;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-      }
-      .card {
-        padding: 18px 18px 24px;
-        width: 220px;
-        text-align: left;
-        text-decoration: none;
-        color: #434343;
-        border: 1px solid #9b9b9b;
-      }
-      .card:hover {
-        border-color: #067df7;
-      }
-      .card h3 {
-        margin: 0;
-        color: #067df7;
-        font-size: 18px;
-      }
-      .card p {
-        margin: 0;
-        padding: 12px 0 0;
-        font-size: 13px;
-        color: #333;
-      }
-    `}</style>
-  </div>
-)
-
-export default Home
+export default Index;
