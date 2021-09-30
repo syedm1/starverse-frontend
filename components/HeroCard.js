@@ -11,9 +11,9 @@ import {
   Stack,
 } from 'grommet';
 
-export const HeroCard = ({ location, image, state, avatar }) => {
+export const HeroCard = ({ id, name, image, nickName, avatar }) => {
   return (
-    <Card width='medium' key={location}>
+    <Card width='medium' key={id}>
       {/* Stacked CardBody and CardHeader on top of each other 
               in that order */}
       <Stack anchor='bottom-left'>
@@ -30,9 +30,9 @@ export const HeroCard = ({ location, image, state, avatar }) => {
           <Avatar src={avatar} a11yTitle='avatar' />
           <Box>
             <Heading level='3' margin='none'>
-              {location}
+              {name}
             </Heading>
-            <Text size='small'>{state}</Text>
+            <Text size='small'>{nickName}</Text>
           </Box>
         </CardHeader>
       </Stack>

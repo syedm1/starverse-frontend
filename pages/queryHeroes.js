@@ -7,3 +7,12 @@ export const HeroesQuery = `query {
     }
   }
 }`;
+
+export const HumansQuery = `query{
+  humans {
+    id
+    name
+    nickName
+    image
+  }
+}`;
