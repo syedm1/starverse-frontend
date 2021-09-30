@@ -1,4 +1,4 @@
-query {
+export const HeroesQuery = `query {
   human(id: "1000") {
     name
     homePlanet
@@ -6,4 +6,4 @@ query {
       name
     }
   }
-}
+}`;

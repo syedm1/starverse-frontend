@@ -1,17 +1,15 @@
-import type { AppProps } from "next/app";
-import { ApolloClient, InMemoryCache } from "@apollo/client";
-import { ApolloProvider } from "@apollo/client";
+import type { AppProps } from 'next/app';
+import { createClient, Provider } from 'urql';
 
-const client = new ApolloClient({
-  uri: "http://localhost:8080/graphql",
-  cache: new InMemoryCache(),
+const client = createClient({
+  url: 'http://localhost:8080/graphql',
 });
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
-    <ApolloProvider client={client}>
+    <Provider value={client}>
       <Component {...pageProps} />
-    </ApolloProvider>
+    </Provider>
   );
 };
 
